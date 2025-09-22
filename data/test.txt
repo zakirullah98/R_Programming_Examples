@@ -1,0 +1,13 @@
+name,age,grade
+Alice,20,A
+Bob,22,B
+Charlie,21,A
+Alice;20;A
+Bob;22;B
+Charlie;21;A
+Alice:20:A
+Bob:22:B
+Charlie:21:A
+Alice	20	A
+Bob	22	B
+Charlie	21	A
