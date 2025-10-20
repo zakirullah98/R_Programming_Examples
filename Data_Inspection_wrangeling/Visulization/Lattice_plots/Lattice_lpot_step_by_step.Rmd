@@ -1,0 +1,52 @@
+---
+title: "Lattice_lpot_step_by_step"
+output: html_document
+---
+
+```{r}
+library(lattice)
+
+# Basic: mpg vs wt
+xyplot(mpg ~ wt, data = mtcars,
+       xlab = "Weight (1000 lb)",
+       ylab = "Miles per gallon",
+       main = "mpg vs weight")
+```
+
+```{r}
+#Add groups (different symbols/lines for cylinder counts)
+xyplot(mpg ~ wt, data = mtcars,
+       groups = factor(cyl),
+       auto.key = list(title = "Cylinders", columns = 3),
+       xlab = "Weight (1000 lb)",
+       ylab = "Miles per gallon",
+       main = "mpg vs weight by cylinder",
+       type = c("p"))   # points
+```
+
+```{r}
+#Add regression lines per group (points + group-wise smooth)
+xyplot(mpg ~ wt, data = mtcars,
+       groups = factor(cyl),
+       auto.key = list(title = "Cylinders", columns = 3),
+       type = c("p", "r"),     # points + regression line (linear)
+       xlab = "Weight (1000 lb)",
+       ylab = "Miles per gallon",
+       main = "mpg vs weight with group regression")
+```
+
+```{r}
+#Conditioning (small multiples / facets)
+xyplot(mpg ~ wt | factor(gear), data = mtcars,
+       groups = factor(cyl),
+       auto.key = list(title = "Cylinders", columns = 3),
+       type = c("p","r"),
+       layout = c(3, 1),   # three panels in a row
+       xlab = "Weight (1000 lb)",
+       ylab = "Miles per gallon",
+       main = "mpg vs weight conditioned on gear")
+```
+
+
+
+

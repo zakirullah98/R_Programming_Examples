@@ -1,7 +1,25 @@
 library(dplyr)
-result <- mtcars %>% #It’s essentially saying, "Take the mtcars dataset, 
-                      #and then apply a series of operations to i
-  group_by(cyl) %>% #cyl=cylinder
-  summarise(avg_mpg = mean(mpg))
-print(result)
+library(tibble)
+data(iris)
+
+#view(random_df)
+summary(iris)
+result <- iris %>%                       
+  group_by(Species) %>%
+  summarize(
+    PlMean=mean(Petal.Length),
+    PwMean=mean(Petal.Width)
+    
+    )
+class(result)
+view(result)
+
+plot(density(iris$Petal.Length))
+
+
+
+
+
+
+
 

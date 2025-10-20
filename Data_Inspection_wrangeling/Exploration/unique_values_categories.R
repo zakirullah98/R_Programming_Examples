@@ -7,3 +7,5 @@ n_distinct(iris$Species)
 #creates a frequency table (distinct values)
 # numbers of each species appeared in the data
 table(iris$Species)
+prop.table(table(iris$Species))
+boxplot(women$height)

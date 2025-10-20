@@ -1,0 +1,5 @@
+x<-c(1,2,3,4,5,6,7,8,9)
+quantile(x,0.50)
+quantile(x,0.25)
+quantile(x,0.75)
+quantile(x,1)

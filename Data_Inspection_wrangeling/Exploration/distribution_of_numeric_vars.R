@@ -1,4 +1,6 @@
 data(mtcars)
+boxplot(mtcars$mpg)
+summary(mtcars$mpg)
 
 # Create a histogram of the 'mpg' column
 hist(mtcars$mpg,
@@ -8,6 +10,9 @@ hist(mtcars$mpg,
      border = "black",
      breaks = 20)  # Number of bin 
 
+data(mtcars)
+head(mtcars)
+?mtcars
 boxplot(mtcars$mpg) 
 ggplot2::geom_histogram()
 

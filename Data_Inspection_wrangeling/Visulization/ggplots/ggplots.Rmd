@@ -1,0 +1,29 @@
+---
+title: "ggplots"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+data(ChickWeight)
+ggplot(ChickWeight, aes(x = Time, y = weight))
+```
+
+```{r}
+ggplot(ChickWeight, aes(x = Time, y = weight)) +
+  geom_point(aes(color = Diet))
+```
+
+```{r}
+ggplot(ChickWeight, aes(x = Time, y = weight)) + 
+  geom_point(aes(color = Diet)) + facet_wrap(~ Diet)+ 
+  theme_classic()
+```
+
+
+
+```{r}
+ggplot(ChickWeight, aes(x = Time, y = weight)) + geom_point(aes(color = Diet))+stat_smooth(method = "lm", se = FALSE, size = 1.3)  + facet_wrap(~ Diet)+ 
+theme_classic()
+```
+
