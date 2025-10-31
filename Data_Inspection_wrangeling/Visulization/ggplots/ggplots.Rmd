@@ -5,6 +5,7 @@ output: html_document
 
 ```{r}
 library(ggplot2)
+head(ChickWeight)
 data(ChickWeight)
 ggplot(ChickWeight, aes(x = Time, y = weight))
 ```

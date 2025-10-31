@@ -7,6 +7,7 @@ output: html_document
 library(lattice)
 
 # Basic: mpg vs wt
+head(mtcars)
 xyplot(mpg ~ wt, data = mtcars,
        xlab = "Weight (1000 lb)",
        ylab = "Miles per gallon",

@@ -1,0 +1,57 @@
+```{r}
+# Load libraries
+library(ggplot2)
+library(dplyr)
+library(patchwork)  # to combine plots
+
+# Parameters
+mean <- 0
+sd <- 1
+
+# 1. Generate random samples using rnorm()
+set.seed(123)
+#default mean=0, sd=1
+x_samples <- rnorm(1000, mean = mean, sd = sd)
+df_rnorm <- data.frame(x = x_samples)
+#anything inside .. ..  refers to computed variables created internally by a statistical transformation (stat).
+p1 <- ggplot(df_rnorm, aes(x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "skyblue", color = "white") +
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd), color = "red", size = 1) +
+  labs(title = "rnorm(): Random Normal Samples", y = "Density") +
+  theme_minimal()
+
+# 2. dnorm(): Normal density function φ(x)
+#also called probability density function(PDF)
+#seq(from, to, num_values = 200)
+x_vals <- seq(-4, 4, length.out = 200)
+df_dnorm <- data.frame(x = x_vals, density = dnorm(x_vals, mean, sd))
+
+p2 <- ggplot(df_dnorm, aes(x, density)) +
+  geom_line(color = "red", size = 1.2) +
+  labs(title = "dnorm(): Normal Density Function φ(x)", y = "Density") +
+  theme_minimal()
+
+# 3. pnorm(): Φ(x)
+#normal distribution function= cumulative distribution function (CDF) 
+#Its value at a point x = probability ≤ x
+df_pnorm <- data.frame(x = x_vals, cdf = pnorm(x_vals, mean, sd))
+
+p3 <- ggplot(df_pnorm, aes(x, cdf)) +
+  geom_line(color = "blue", size = 1.2) +
+  labs(title = "pnorm(): Cumulative Distribution Φ(x)", y = "Cumulative Probability") +
+  theme_minimal()
+
+# 4. qnorm(): Normal quantile function Φ⁻¹(y)
+y_vals <- seq(0.001, 0.999, length.out = 200)
+df_qnorm <- data.frame(y = y_vals, quantile = qnorm(y_vals, mean, sd))
+
+p4 <- ggplot(df_qnorm, aes(y, quantile)) +
+  geom_line(color = "darkgreen", size = 1.2) +
+  labs(title = "qnorm(): Quantile Function Φ⁻¹(y)", x = "Probability (y)", y = "Quantile") +
+  theme_minimal()
+
+# Combine all plots together
+(p1 | p2) / (p3 | p4)
+
+```
+

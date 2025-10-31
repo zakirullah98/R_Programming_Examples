@@ -1,14 +1,17 @@
 data("airquality")
-plot(x=airquality$Wind,y=NULL,
-     main ="Plot()", sub = "abc", 
-     xlab = "Time", ylab = "Wind")
+head(airquality)
+plot(airquality$Wind,airquality$Temp,
+     main ="Base Plot")
+
+
 
 # multiple plots mfrow or mfcol
 par(mfrow = c(1, 2))
 
 plot(airquality$Temp,
      main = "Wind",
-     ylab = "Wind (mph)")
+     ylab = "Wind (mph)",
+     xlab="Time")
 
 
 plot(airquality$Temp,
